@@ -4,16 +4,16 @@
 
 ## Active Plans
 
-1. `active/phase-00-project-skeleton.md`
-2. `active/phase-01-search-core-mvp.md`
-3. `active/phase-02-api-storage-skeleton.md`
-4. `active/phase-03-persistence-e2e.md`
-5. `active/phase-04-benchmarking.md`
-6. `active/phase-05-segment-storage.md`
+1. `active/phase-01-search-core-mvp.md`
+2. `active/phase-02-api-storage-skeleton.md`
+3. `active/phase-03-persistence-e2e.md`
+4. `active/phase-04-benchmarking.md`
+5. `active/phase-05-segment-storage.md`
 
 ## Completed Plans
 
 - 완료된 phase는 `completed/`로 옮기고, 실제 구현 중 바뀐 결정과 검증 명령을 남긴다.
+- `completed/phase-00-project-skeleton.md`
 
 ## Tech Debt
 

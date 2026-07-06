@@ -2,17 +2,34 @@
 
 목표: Spring 없는 Java 21 core에서 analyzer, inverted index, BM25, Top-K 검색 흐름을 완성한다.
 
+상태: In Progress
+
+시작일: 2026-07-06
+
 ## 1. Analyzer
 
-- [ ] `com.minisearchengine.core.analyzer` 패키지를 만든다.
-- [ ] `Analyzer` 인터페이스를 만든다.
-- [ ] lowercase + 문자/숫자 기반 기본 Analyzer를 만든다.
-- [ ] `TokenFilter` 확장 지점을 둘지 판단한다.
-- [ ] Analyzer 단위 테스트를 만든다.
+- [X] `com.minisearchengine.core.analyzer` 패키지를 만든다.
+- [X] `Analyzer` 인터페이스를 만든다.
+- [X] lowercase + 문자/숫자 기반 기본 Analyzer를 만든다.
+- [X] `TokenFilter` 확장 지점을 둘지 판단한다.
+- [X] Analyzer 단위 테스트를 만든다.
+
+Decision:
+
+- `TokenFilter`는 token list를 변환하는 얇은 확장 지점으로 둔다. 기본 analyzer는 필터 없이 lowercase + 문자/숫자 tokenization만 수행한다.
 
 Review checkpoint:
 
 - Analyzer가 index 저장 구조를 모르도록 분리됐는지 Codex에게 리뷰를 요청한다.
+
+Review result:
+
+- 2026-07-06: `analyzer` 패키지는 Java standard library만 사용하며, `index` 저장 구조에 의존하지 않는다.
+
+Verification:
+
+- 2026-07-06: `.\gradlew.bat :search-core:test` 통과.
+- 2026-07-06: `.\gradlew.bat test` 통과.
 
 ## 2. Inverted Index
 
