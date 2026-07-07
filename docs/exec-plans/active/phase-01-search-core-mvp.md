@@ -2,30 +2,56 @@
 
 목표: Spring 없는 Java 21 core에서 analyzer, inverted index, BM25, Top-K 검색 흐름을 완성한다.
 
+상태: In Progress
+
+시작일: 2026-07-06
+
 ## 1. Analyzer
 
-- [ ] `com.minisearchengine.core.analyzer` 패키지를 만든다.
-- [ ] `Analyzer` 인터페이스를 만든다.
-- [ ] lowercase + 문자/숫자 기반 기본 Analyzer를 만든다.
-- [ ] `TokenFilter` 확장 지점을 둘지 판단한다.
-- [ ] Analyzer 단위 테스트를 만든다.
+- [X] `com.minisearchengine.core.analyzer` 패키지를 만든다.
+- [X] `Analyzer` 인터페이스를 만든다.
+- [X] lowercase + 문자/숫자 기반 기본 Analyzer를 만든다.
+- [X] `TokenFilter` 확장 지점을 둘지 판단한다.
+- [X] Analyzer 단위 테스트를 만든다.
+
+Decision:
+
+- `TokenFilter`는 token list를 변환하는 얇은 확장 지점으로 둔다. 기본 analyzer는 필터 없이 lowercase + 문자/숫자 tokenization만 수행한다.
 
 Review checkpoint:
 
 - Analyzer가 index 저장 구조를 모르도록 분리됐는지 Codex에게 리뷰를 요청한다.
 
+Review result:
+
+- 2026-07-06: `analyzer` 패키지는 Java standard library만 사용하며, `index` 저장 구조에 의존하지 않는다.
+
+Verification:
+
+- 2026-07-06: `.\gradlew.bat :search-core:test` 통과.
+- 2026-07-06: `.\gradlew.bat test` 통과.
+
 ## 2. Inverted Index
 
-- [ ] `SearchDocument` record를 만든다.
-- [ ] `Posting` record를 만든다.
-- [ ] `PostingList`를 객체 기반으로 만든다.
-- [ ] `InvertedIndex`를 만든다.
-- [ ] 문서별 token length와 전체 document count를 관리한다.
-- [ ] term frequency와 document frequency 테스트를 만든다.
+- [X] `SearchDocument` record를 만든다.
+- [X] `Posting` record를 만든다.
+- [X] `PostingList`를 객체 기반으로 만든다.
+- [X] `InvertedIndex`를 만든다.
+- [X] 문서별 token length와 전체 document count를 관리한다.
+- [X] term frequency와 document frequency 테스트를 만든다.
 
 Review checkpoint:
 
 - posting list 책임과 document statistics 책임이 섞이지 않았는지 리뷰받는다.
+
+Review result:
+
+- 2026-07-06: `PostingList`는 documentId별 term frequency만 관리하고, term 문자열은 알지 않는다.
+- 2026-07-06: `InMemoryInvertedIndex`는 `postingLists`와 `documentLengths`를 분리해 term별 posting과 문서 통계를 따로 관리한다.
+
+Verification:
+
+- 2026-07-06: `.\gradlew.bat :search-core:test` 통과.
 
 ## 3. BM25 Ranking
 

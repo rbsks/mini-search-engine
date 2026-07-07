@@ -2,6 +2,20 @@
 
 목표: 멀티모듈 구조가 IDE와 Gradle에서 정상 인식되는지 확인한다.
 
+상태: Completed
+
+완료일: 2026-07-06
+
+## Completion Record
+
+- 실제 구현 범위: Gradle 멀티모듈 skeleton을 `search-api`, `search-core`, `search-storage`, `search-benchmark`로 구성했다.
+- 실제 구현 범위: 기존 Kotlin/Spring Boot 앱은 `search-api` 모듈 진입점으로 유지했다.
+- 실제 구현 범위: `search-core`, `search-storage`, `search-benchmark`는 후속 phase 구현을 위한 독립 모듈로 인식된다.
+- 바뀐 결정: 없음. 모듈러 모놀리식, Java 21 기반 `search-core`, Kotlin/Spring Boot 기반 `search-api` 방향을 유지한다.
+- 검증 명령: `.\gradlew.bat projects --console plain`로 `:search-api`, `:search-benchmark`, `:search-core`, `:search-storage` 4개 하위 모듈을 확인했다.
+- 검증 명령: `.\gradlew.bat test`가 `BUILD SUCCESSFUL`로 통과했다.
+- 남은 follow-up: Phase 01에서 `search-core` analyzer, inverted index, BM25, Top-K MVP를 구현한다.
+
 ## TODO
 
 - [X] IntelliJ에서 Gradle project를 다시 import한다.
