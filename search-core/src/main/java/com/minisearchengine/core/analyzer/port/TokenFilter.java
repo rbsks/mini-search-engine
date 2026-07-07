@@ -1,4 +1,6 @@
-package com.minisearchengine.core.analyzer;
+package com.minisearchengine.core.analyzer.port;
+
+import com.minisearchengine.core.analyzer.SimpleAnalyzer;
 
 import java.util.List;
 

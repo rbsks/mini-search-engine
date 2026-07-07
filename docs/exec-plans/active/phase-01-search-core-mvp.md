@@ -33,16 +33,25 @@ Verification:
 
 ## 2. Inverted Index
 
-- [ ] `SearchDocument` record를 만든다.
-- [ ] `Posting` record를 만든다.
-- [ ] `PostingList`를 객체 기반으로 만든다.
-- [ ] `InvertedIndex`를 만든다.
-- [ ] 문서별 token length와 전체 document count를 관리한다.
-- [ ] term frequency와 document frequency 테스트를 만든다.
+- [X] `SearchDocument` record를 만든다.
+- [X] `Posting` record를 만든다.
+- [X] `PostingList`를 객체 기반으로 만든다.
+- [X] `InvertedIndex`를 만든다.
+- [X] 문서별 token length와 전체 document count를 관리한다.
+- [X] term frequency와 document frequency 테스트를 만든다.
 
 Review checkpoint:
 
 - posting list 책임과 document statistics 책임이 섞이지 않았는지 리뷰받는다.
+
+Review result:
+
+- 2026-07-06: `PostingList`는 documentId별 term frequency만 관리하고, term 문자열은 알지 않는다.
+- 2026-07-06: `InMemoryInvertedIndex`는 `postingLists`와 `documentLengths`를 분리해 term별 posting과 문서 통계를 따로 관리한다.
+
+Verification:
+
+- 2026-07-06: `.\gradlew.bat :search-core:test` 통과.
 
 ## 3. BM25 Ranking
 

@@ -1,5 +1,8 @@
 package com.minisearchengine.core.analyzer;
 
+import com.minisearchengine.core.analyzer.port.Analyzer;
+import com.minisearchengine.core.analyzer.port.TokenFilter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
